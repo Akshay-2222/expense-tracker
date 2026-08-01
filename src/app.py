@@ -43,6 +43,24 @@ def validate_expense_data(data):
     return True, None
 
 
+@app.route("/", methods=["GET"])
+def home():
+    return jsonify({
+        "message": "Smart Expense Tracker API",
+        "version": "1.0",
+        "endpoints": {
+            "add_expense": "POST /expenses",
+            "view_all_expenses": "GET /expenses",
+            "filter_by_category": "GET /expenses?category=Food",
+            "total_expenses": "GET /expenses/total",
+            "total_by_category": "GET /expenses/total?category=Food",
+            "delete_expense": "DELETE /expenses/<expense_id>",
+            "search_expenses": "GET /expenses/search?q=lunch",
+            "health": "GET /health",
+        },
+    }), 200
+
+
 @app.route("/expenses", methods=["POST"])
 def add_expense():
     data = request.get_json(silent=True)
@@ -122,4 +140,3 @@ def health():
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
-

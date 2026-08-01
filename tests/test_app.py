@@ -35,6 +35,16 @@ def add_sample_expense(client, title="Lunch", amount=12.5, category="Food", date
     )
 
 
+def test_home_endpoint(client):
+    response = client.get("/")
+
+    assert response.status_code == 200
+    data = response.get_json()
+    assert data["message"] == "Smart Expense Tracker API"
+    assert data["endpoints"]["add_expense"] == "POST /expenses"
+    assert data["endpoints"]["health"] == "GET /health"
+
+
 def test_add_expense_success(client):
     response = add_sample_expense(client)
 
@@ -268,4 +278,3 @@ def test_health_check(client):
 
     assert response.status_code == 200
     assert response.get_json()["status"] == "ok"
-
