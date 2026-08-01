@@ -23,7 +23,7 @@ This project was built with significant help from AI tools. I used AI to move fa
 - Kept the implementation simple with in-memory storage because the assignment allowed it
 - Chose search by title as the single optional bonus feature
 - Reviewed the validation rules for required fields, positive amounts, non-empty strings, and date format
-- Ran or prepared the documented install, run, and test commands so the reviewer can execute the project consistently
+- Tested the documented install and test commands after cloning the repository on an EC2 instance, and confirmed all 28 tests passed
 
 ## What I Validated, Tested, or Changed
 
